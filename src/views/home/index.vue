@@ -1,9 +1,8 @@
 <script setup lang="ts">
-
 </script>
 
 <template>
-  <div>Index </div>
+  <div>Home</div>
 </template>
 
 <style>
