@@ -1,17 +1,18 @@
+import { createRouter, createWebHistory } from 'vue-router'
 import Home from '~/views/home/index.vue'
 import Mine from '~/views/mine/index.vue'
 
-import { createRouter, createWebHistory } from 'vue-router'
-
 const routes = [
   {
-    path: '/',
+    path: '/home/:id',
     name: 'home',
     component: Home,
     meta: {
       title: '首页',
-      keepAlive: false
-    }
+      keepAlive: false,
+    },
+    //  允许在 props 中接受参数
+    props: true,
   },
   {
     path: '/mine',
@@ -19,12 +20,12 @@ const routes = [
     component: Mine,
     meta: {
       title: '我的',
-      keepAlive: false
-    }
+      keepAlive: false,
+    },
   },
 ]
 
 export const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
 })
