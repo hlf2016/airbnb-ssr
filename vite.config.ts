@@ -16,6 +16,7 @@ export default defineConfig({
     AutoImport({
       imports: [
         'vue',
+        'vue-router',
         'vue/macros',
       ],
       resolvers: [ElementPlusResolver()],

@@ -19,4 +19,12 @@ export default defineConfig({
       dark_bg: 'var(--dark-bg)',
     },
   },
+  // 更改预设样式
+  preflights: [{
+    getCSS: () => `
+    .el-button {
+      background-color: var(--el-button-bg-color, var(--el-color-white))
+    }
+  `,
+  }],
 })
