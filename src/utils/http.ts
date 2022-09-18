@@ -1,4 +1,4 @@
-import type { AxiosRequestConfig } from 'axios'
+import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import axios from 'axios'
 
 const defaultConfig = {
@@ -6,29 +6,40 @@ const defaultConfig = {
   baseUrl: '',
 }
 
-const axiosInstance = axios.create(defaultConfig)
+class Http {
+  // 静态私有属性
+  private static axiosInstance: AxiosInstance = axios.create(defaultConfig)
 
-// 请求拦截
-axiosInstance.interceptors.request.use((config) => {
-  return config
-}, (error) => {
-  return Promise.reject(error)
-})
+  constructor() {
+    this.httpRequestInterceptor()
+    this.httpResponseInterceptor()
+  }
 
-// 响应拦截
-axiosInstance.interceptors.response.use((response) => {
-  return response
-}, (error) => {
-  return Promise.reject(error)
-})
+  private httpRequestInterceptor() {
+    Http.axiosInstance.interceptors.request.use((config: AxiosRequestConfig) => {
+      // 请求拦截器
+      return config
+    }, (error) => {
+      return Promise.reject(error)
+    })
+  }
 
-// 封装请求
-// GET
-export const httpRequestGet = (url: string, params: AxiosRequestConfig<any> | undefined) => {
-  return axiosInstance.get(url, params).then(res => res.data).catch()
+  private httpResponseInterceptor() {
+    Http.axiosInstance.interceptors.response.use((response: AxiosResponse) => {
+      // 响应拦截器
+      return response
+    }, (error) => {
+      return Promise.reject(error)
+    })
+  }
+
+  httpGet<T>(url: string, params: AxiosRequestConfig): Promise<T> {
+    return Http.axiosInstance.get(url, params).then(res => res.data).catch()
+  }
+
+  httpPost<T>(url: string, params: AxiosRequestConfig): Promise<T> {
+    return Http.axiosInstance.post(url, params).then(res => res.data).catch()
+  }
 }
 
-// POST
-export const httpRequestPost = (url: string, params: Object) => {
-  return axiosInstance.post(url, params).then(res => res.data).catch()
-}
+export const http = new Http()

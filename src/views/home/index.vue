@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { yesOrNo } from '../../api/index'
+
 defineProps({
   id: String,
 })
@@ -22,6 +24,9 @@ const open = () => {
       来自 params {{ $route.params.id }}
     </div>
     <div>来自props {{ id }}</div>
+    <el-button @click="yesOrNo()">
+      加载数据
+    </el-button>
     <el-button @click="open">
       Default
     </el-button>
