@@ -10,14 +10,10 @@ const toggleLang = () => {
 const locale = computed(() => {
   return lang === 'zh-cn' ? zhCn : en
 })
-
-const config = reactive({
-  autoInsertSpace: true,
-})
 </script>
 
 <template>
-  <el-config-provider :locale="locale" :button="config">
+  <el-config-provider :locale="locale">
     <div>
       <el-button @click="toggleLang()">
         切换语言
