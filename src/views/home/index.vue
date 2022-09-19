@@ -14,6 +14,8 @@ const open = () => {
     ]),
   })
 }
+
+const date1 = ref('')
 </script>
 
 <template>
@@ -32,6 +34,7 @@ const open = () => {
     </el-button>
     <el-input v-model="input" placeholder="Please input" />
     <div>Your Input {{ input }}</div>
+    <el-date-picker v-model="date1" type="week" format="[Week] ww" placeholder="Pick a week" />
   </div>
 </template>
 
