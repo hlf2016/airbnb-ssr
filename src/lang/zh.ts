@@ -1,0 +1,7 @@
+export default {
+  message: {
+    home: '首页',
+    mine: '我的',
+    changeLanguage: '切换语言',
+  },
+}
