@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import { router } from './router'
-import i18n from './lang/i18n'
+import i18n from './plugins/i18n'
 
 // 应用 tailwindcss 的预设样式
 import '@unocss/reset/tailwind.css'

@@ -8,7 +8,7 @@ const { t, locale: i18nLocale } = useI18n()
 
 let lang = $ref('zh-cn')
 const toggleLang = () => {
-  i18nLocale.value = lang === 'zh-cn' ? 'en' : 'zh'
+  i18nLocale.value = lang === 'zh-cn' ? 'en' : 'zh-CN'
   lang = lang === 'zh-cn' ? 'en' : 'zh-cn'
 }
 
