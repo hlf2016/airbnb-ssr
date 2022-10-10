@@ -1,9 +1,15 @@
 <script setup lang="ts">
 import { yesOrNo } from '../../api/index'
+import IndexedDB from '../../utils/indexDB'
 
 defineProps({
   id: String,
 })
+
+const indexedDB = new IndexedDB('test')
+
+indexedDB.openStore('todoList', 'id', ['title', 'completed'])
+
 const input = ref('')
 
 const open = () => {

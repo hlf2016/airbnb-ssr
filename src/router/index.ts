@@ -4,6 +4,11 @@ import Mine from '~/views/mine/index.vue'
 
 const routes = [
   {
+    path: '/',
+    name: 'Home',
+    component: Home,
+  },
+  {
     path: '/home/:id',
     name: 'home',
     component: Home,
